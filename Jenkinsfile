@@ -5,7 +5,7 @@ pipeline {
     environment {
         APP_NAME = 'account-service'
         IMAGE_NAME = 'account-service'
-        APP_PORT = '8086'
+        APP_PORT = '8087'
     }
 
     stages {

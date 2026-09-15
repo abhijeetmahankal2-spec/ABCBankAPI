@@ -13,7 +13,7 @@ This file tracks the work items for JIRA issue AB-1 and the steps to prepare, bu
 3. Ensure use latest Java and Gradle configuration
 4. Write JUnit test cases for the project
 5. Build the code
-6. Run the code for confirmation
+6. Run the code and check if it runs successfully wihtout any errors
 7. Create a new feature branch
 8. Commit and push the changes to feature branch
 9. Raise a PR from feature to develop branch
