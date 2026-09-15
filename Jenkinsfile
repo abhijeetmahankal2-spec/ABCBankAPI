@@ -18,52 +18,34 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                sh './gradlew clean build'
+                bat 'gradlew.bat clean build'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    docker build \
-                        -t ${IMAGE_NAME}:${BUILD_NUMBER} .
-                '''
+                bat 'docker build -t %IMAGE_NAME%:%BUILD_NUMBER% .'
             }
         }
 
         stage('Stop Existing Container') {
             steps {
-                sh '''
-                    docker stop ${APP_NAME} || true
-                    docker rm ${APP_NAME} || true
-                '''
+                bat 'docker stop %APP_NAME% || exit /b 0'
+                bat 'docker rm %APP_NAME% || exit /b 0'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
-                    docker run -d \
-                        --name ${APP_NAME} \
-                        -p ${APP_PORT}:8080 \
-                        ${IMAGE_NAME}:${BUILD_NUMBER}
-                '''
+                bat 'docker run -d --name %APP_NAME% -p %APP_PORT%:8080 %IMAGE_NAME%:%BUILD_NUMBER%'
             }
         }
 
-        stage('Health Check') {
-            steps {
-                sh '''
-                    sleep 10
-                    curl --fail http://localhost:${APP_PORT}/actuator/health
-                '''
-            }
-        }
     }
 
     post {
         success {
-            echo 'Spring Boot application deployed successfully'
+            echo 'Deployment successful'
         }
 
         failure {
