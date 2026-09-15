@@ -1,0 +1,9 @@
+1. Get the details of JIRA ISSUE AB-1
+2. Readd the description and being with the development
+3 Ensure use latest Java and Gradle configuration
+4 Write Junit test cases for the project 
+5 Build the codde
+6 Run the Code for confirmation 
+7 Create a new feature branch 
+8 Commit and Push the changes to feature branch
+9 Raise a PR from Feature to Develop Branch
