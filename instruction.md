@@ -9,14 +9,14 @@ This file tracks the work items for JIRA issue AB-1 and the steps to prepare, bu
 ## Tasks
 
 1. Get the details of JIRA ISSUE AB-1
-2. Re-add the description and begin development
+2. Re-add the description and begin development and make Jira Status "In-Progress"
 3. Ensure use latest Java and Gradle configuration
 4. Write JUnit test cases for the project
 5. Build the code
 6. Run the code for confirmation
 7. Create a new feature branch
 8. Commit and push the changes to feature branch
-9. Raise a PR from feature to develop branch
+9. Raise a PR from feature to develop branch and make Jira Status "In-Review"
 10 create a Docker file for Deployment
 
 ## Quick Notes & Commands
