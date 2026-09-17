@@ -43,7 +43,7 @@ public class AccountController {
             @Parameter(description = "Unique bank account number", example = "123456789012")
             @PathVariable String accountNumber,
             @Parameter(description = "Unique user/customer identifier", example = "USR100245")
-            @RequestParam String userId,
+            @RequestParam(required = false) String userId,
             @RequestHeader(value = "Authorization", required = false) String authorizationHeader) {
         return accountService.getAccount(accountNumber, userId, authorizationHeader);
     }

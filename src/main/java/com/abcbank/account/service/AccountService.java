@@ -23,13 +23,14 @@ public class AccountService {
         if (!VALID_TOKEN.equals(authorizationHeader)) {
             throw new UnauthenticatedException();
         }
-        if (!ACCOUNT_NUMBER.matcher(accountNumber).matches() || !USER_ID.matcher(userId).matches()) {
+        if (!ACCOUNT_NUMBER.matcher(accountNumber).matches()
+            || (userId != null && !USER_ID.matcher(userId).matches())) {
             throw new InvalidRequestException();
         }
 
         AccountResponse account = accountRepository.findByAccountNumber(accountNumber)
                 .orElseThrow(AccountNotFoundException::new);
-        if (!account.userId().equals(userId)) {
+        if (userId != null && !account.userId().equals(userId)) {
             throw new ForbiddenException();
         }
         return account;

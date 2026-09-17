@@ -42,11 +42,12 @@ class AccountControllerTest {
     }
 
     @Test
-    void rejectsMissingUserId() throws Exception {
+    void returnsAccountWhenUserIdIsOmitted() throws Exception {
         mockMvc.perform(get("/api/v1/accounts/123456789012")
                         .header("Authorization", "Bearer valid-token"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.errorCode", is("INVALID_REQUEST")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.accountNumber", is("123456789012")))
+                .andExpect(jsonPath("$.accountHolderName", is("John Doe")));
     }
 
     @Test
